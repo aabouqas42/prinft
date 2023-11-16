@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:29:27 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/16 16:59:22 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:13:16 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	baselen(unsigned int num)
 	return (len);
 }
 
-static int	ft_helper(char *str,char *base, unsigned int num, int len)
+static int	ft_helper(char *str, char *base, unsigned int num, int len)
 {
 	while (num)
 	{

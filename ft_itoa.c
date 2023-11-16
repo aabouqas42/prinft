@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:02:46 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/16 16:30:43 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/16 22:11:20 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_numlen(int num)
 	return (len);
 }
 
-int	printnumber(char *str, int num, int len)
+static int	ft_helper(char *str, int num, int len)
 {
 	while (num)
 	{
@@ -67,5 +67,5 @@ int	ft_itoa(int num)
 		num *= (-1);
 	}
 	str[len] = '\0';
-	return (printnumber(str, num, len - 1));
+	return (ft_helper(str, num, len - 1));
 }
