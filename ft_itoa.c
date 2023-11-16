@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:02:46 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/16 13:25:44 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:30:43 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ int	printnumber(char *str, int num, int len)
 		num /= 10;
 		len--;
 	}
-	ft_putstr(str);
+	if (ft_putstr(str) == -1)
+	{
+		free (str);
+		return (-1);
+	}
 	len = ft_strlen(str);
 	free(str);
 	return (len);

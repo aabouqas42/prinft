@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:50:24 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/16 16:14:00 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:57:20 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,35 @@ static int	baselen(unsigned long num)
 	return (len);
 }
 
+static int	ft_helper(char *str, unsigned long p, char *base, int len)
+{
+	if (ft_putstr ("0x") == -1)
+	{
+		free(str);
+		return (-1);
+	}
+	while (p)
+	{
+		str[len] = base[p % 16];
+		p /= 16;
+		len--;
+	}
+	if (ft_putstr(str) == -1)
+	{
+		free (str);
+		return (-1);
+	}
+	len = ft_strlen(str);
+	free (str);
+	return (len + 2);
+}
+
 int	ft_pointer(unsigned long p)
 {
 	char	*str;
 	char	*base;
 	int		len;
-	int		check;
 
-	check = 0;
 	if (p == 0)
 		return (ft_putstr("0x0"));
 	base = "0123456789abcdef";
@@ -40,23 +61,6 @@ int	ft_pointer(unsigned long p)
 	str = malloc (len + 1);
 	if (!str)
 		return (-1);
-	str[len--] = '\0';
-	check = ft_putstr ("0x");
-	if (check == -1)
-		return (-1);
-	while (p)
-	{
-		str[len] = base[p % 16];
-		p /= 16;
-		len--;
-	}
-	len = ft_strlen(str);
-	check = ft_putstr(str);
-	if (check == -1 || !len)
-	{
-		free (str);
-		return (-1);
-	}
-	free (str);
-	return (len + 2);
+	str[len] = '\0';
+	return (ft_helper(str, p, base, (len - 1)));
 }
