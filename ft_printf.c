@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 20:38:18 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/16 18:42:34 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:44:55 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	handler(va_list args, const char c)
 	if (c == 'c')
 		return (ft_putchar (va_arg(args, int)));
 	if (c == 'd' || c == 'i')
-		return (ft_itoa(va_arg(args, int)));
+		return (ft_print_number(va_arg(args, int)));
 	if (c == 'x')
 		return (ft_base(va_arg(args, unsigned int), "0123456789abcdef"));
 	if (c == 'X')
@@ -33,9 +33,9 @@ int	handler(va_list args, const char c)
 	return (ft_putchar(c));
 }
 
-static int	ft_helper(const char *str, va_list args)
+static int	print(const char *str, va_list args)
 {
-	int	check;
+	int	got;
 	int	len;
 
 	len = 0;
@@ -44,10 +44,10 @@ static int	ft_helper(const char *str, va_list args)
 		if (*str == '%')
 		{
 			str++;
-			check = handler(args, *str);
-			if (check == -1)
+			got = handler(args, *str);
+			if (got == -1)
 				return (-1);
-			len += check;
+			len += got;
 			str++;
 		}
 		else if (*str)
@@ -64,16 +64,12 @@ static int	ft_helper(const char *str, va_list args)
 int	ft_printf(const char *str, ...)
 {
 	int		len;
-	int		check;
 	va_list	args;
 
 	va_start (args, str);
-	len = 0;
-	check = ft_helper(str, args);
-	if (check == -1)
+	len = print(str, args);
+	if (len == -1)
 		return (-1);
-	else
-		len = check;
 	va_end(args);
 	return (len);
 }

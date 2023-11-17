@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:20:05 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/16 18:24:17 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/17 12:13:27 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_printf(const char *str, ...);
 int	ft_strlen(const char *s);
 int	ft_putstr(char *str);
 int	ft_putchar(int c);
-int	ft_itoa(int num);
+int	ft_print_number(int num);
 int	ft_base(unsigned int num, char *base);
 int	ft_pointer(unsigned long p);
 int	ft_unsigned(unsigned int num);
