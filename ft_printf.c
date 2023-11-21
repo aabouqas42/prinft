@@ -6,13 +6,13 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 20:38:18 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/17 17:44:55 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/19 13:00:54 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	handler(va_list args, const char c)
+static int	handler(va_list args, const char c)
 {
 	if (c == 's')
 		return (ft_putstr (va_arg(args, char *)));

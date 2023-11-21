@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:29:27 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/16 18:13:16 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/18 10:29:55 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_base(unsigned int num, char *base)
 	if (num == 0)
 		return (ft_putchar('0'));
 	len = baselen(num);
-	str = (char *) malloc (len + 1);
+	str = malloc (len + 1);
 	if (!str)
 		return (-1);
 	str[len] = '\0';

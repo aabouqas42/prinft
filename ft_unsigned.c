@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 18:31:41 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/16 18:19:07 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:50:19 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,19 @@ static int	ft_numlen(unsigned int num)
 	return (len);
 }
 
-static int	ft_helper(char *str, unsigned int num, int len)
+int	ft_unsigned(unsigned int num)
 {
+	char	*str;
+	int		len;
+
+	if (num == 0)
+		return (ft_putchar('0'));
+	len = ft_numlen(num);
+	str = malloc (len + 1);
+	if (!str)
+		return (-1);
+	str[len] = '\0';
+	len--;
 	while (num)
 	{
 		str[len] = (num % 10) + 48;
@@ -41,21 +52,4 @@ static int	ft_helper(char *str, unsigned int num, int len)
 	len = ft_strlen(str);
 	free (str);
 	return (len);
-}
-
-int	ft_unsigned(unsigned int num)
-{
-	char	*str;
-	int		len;
-
-	if (num == 0)
-		return (ft_putchar('0'));
-	if (num < 0)
-		num = 4294967295 + num;
-	len = ft_numlen(num);
-	str = malloc (len + 1);
-	if (!str)
-		return (-1);
-	str[len] = '\0';
-	return (ft_helper(str, num, len - 1));
 }
