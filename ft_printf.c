@@ -44,18 +44,19 @@ static int	print(const char *str, va_list args)
 		if (*str == '%')
 		{
 			str++;
-			got = handler(args, *str);
-			if (got == -1)
-				return (-1);
-			len += got;
-			str++;
+			if (*str)
+			{
+				got = handler(args, *str++);
+				if (got == -1)
+					return (-1);
+				len += got;
+			}
 		}
 		else if (*str)
 		{
-			if (ft_putchar((int)*str) == -1)
+			if (ft_putchar((int)*str++) == -1)
 				return (-1);
 			len++;
-			str++;
 		}
 	}
 	return (len);
@@ -68,8 +69,6 @@ int	ft_printf(const char *str, ...)
 
 	va_start (args, str);
 	len = print(str, args);
-	if (len == -1)
-		return (-1);
 	va_end(args);
 	return (len);
 }
